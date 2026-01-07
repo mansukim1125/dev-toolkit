@@ -1,0 +1,21 @@
+<template id="base64">
+  <h2>Base64 Encode/Decode</h2>
+  <div>
+    <div>Input:</div>
+    <textarea id="input" rows="6" cols="60" placeholder="Enter text or Base64..."></textarea>
+  </div>
+  <div>
+    <button onclick="Base64Tool.encode()">Encode</button>
+    <button onclick="Base64Tool.decode()">Decode</button>
+    <button onclick="Base64Tool.clear()">Clear</button>
+  </div>
+  <div id="error" style="color:red"></div>
+  <div>
+    <div>Output:</div>
+    <textarea id="output" rows="6" cols="60" readonly placeholder="Result..."></textarea>
+  </div>
+  <div>
+    <button onclick="Base64Tool.copy()">Copy</button>
+  </div>
+  <script src="./src/main.js"></script>
+</template>
