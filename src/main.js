@@ -51,6 +51,7 @@ const tools = [
   { id: 'base64', name: 'Base64' },
   { id: 'json-prettier', name: 'JSON Prettier' },
   { id: 'env-converter', name: 'Env Converter' },
+  { id: 'json-xml-compare', name: 'JSON/XML Compare' },
   // 새 도구 추가
 ];
 
