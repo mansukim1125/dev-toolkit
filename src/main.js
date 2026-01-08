@@ -21,15 +21,33 @@ async function loadHTMLTemplate(id) {
   // template 요소 찾아서 script 태그 로드
   const template = doc.querySelector('template');
   if (template) {
-    const scripts = template.content.querySelectorAll('script[src]');
+    const scripts = template.content.querySelectorAll('script');
     scripts.forEach(script => {
-      const src = script.getAttribute('src');
-      // 상대 경로를 절대 경로로 변경
-      const resolvedSrc = new URL(src, `${window.location.origin}/tools/${id}/index.html`).pathname;
-
-      // body 끝에 script 태그 추가
       const scriptElement = document.createElement('script');
-      scriptElement.src = resolvedSrc;
+
+      // type 속성이 있으면 복사 (module 등)
+      const attributeNames = script.getAttributeNames();
+      for (const attrName of attributeNames) {
+        if (attrName !== 'src') {
+          scriptElement.setAttribute(attrName, script.getAttribute(attrName));
+        }
+      }
+
+      // src가 있으면 외부 스크립트
+      const src = script.getAttribute('src');
+      if (src) {
+        // CDN URL (http:// 또는 https://로 시작)은 그대로 사용
+        let resolvedSrc = src;
+        if (!src.startsWith('http://') && !src.startsWith('https://')) {
+          // 상대 경로만 절대 경로로 변경
+          resolvedSrc = new URL(src, `${window.location.origin}/tools/${id}/index.html`).pathname;
+        }
+        scriptElement.src = resolvedSrc;
+      } else {
+        // inline 스크립트
+        scriptElement.textContent = script.textContent;
+      }
+
       document.body.appendChild(scriptElement);
     });
   }
@@ -52,6 +70,7 @@ const tools = [
   { id: 'json-prettier', name: 'JSON Prettier' },
   { id: 'env-converter', name: 'Env Converter' },
   { id: 'json-xml-compare', name: 'JSON/XML Compare' },
+  { id: 'jwt', name: 'JWT' },
   // 새 도구 추가
 ];
 
