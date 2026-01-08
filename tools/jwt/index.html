@@ -1,0 +1,101 @@
+<template id="jwt">
+  <h2>JWT Encode/Decode/Verify</h2>
+  <div>
+    <div>Mode:</div>
+    <button id="decode-tab-btn" onclick="JwtTool.switchTab('decode')">Decode</button>
+    <button id="verify-tab-btn" onclick="JwtTool.switchTab('verify')">Verify</button>
+    <button id="generate-tab-btn" onclick="JwtTool.switchTab('generate')">Generate</button>
+  </div>
+
+  <!-- Decode Tab -->
+  <div id="decode-tab-content">
+    <div>
+      <div>JWT Token:</div>
+      <textarea id="decode-jwt-input" rows="4" cols="60" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+    </div>
+    <div>
+      <button onclick="JwtTool.decode()">Decode</button>
+      <button onclick="JwtTool.clearTab('decode')">Clear</button>
+    </div>
+    <div id="decode-error" style="color:red"></div>
+    <div>
+      <div>Header:</div>
+      <textarea id="decode-header-output" rows="4" cols="60" readonly placeholder="Header..."></textarea>
+    </div>
+    <div>
+      <div>Payload:</div>
+      <textarea id="decode-payload-output" rows="6" cols="60" readonly placeholder="Payload..."></textarea>
+    </div>
+    <div>
+      <div>Signature:</div>
+      <textarea id="decode-signature-output" rows="2" cols="60" readonly placeholder="Signature..."></textarea>
+    </div>
+    <div>
+      <button onclick="JwtTool.copyOutput('decode-payload-output')">Copy Payload</button>
+    </div>
+  </div>
+
+  <!-- Verify Tab -->
+  <div id="verify-tab-content" style="display: none;">
+    <div>
+      <div>JWT Token:</div>
+      <textarea id="verify-jwt-input" rows="4" cols="60" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+    </div>
+    <div>
+      <div>Algorithm:</div>
+      <select id="verify-algorithm" onchange="JwtTool.updateKeyPlaceholder('verify')">
+        <option value="HS256">HS256 (HMAC SHA-256)</option>
+        <option value="RS256">RS256 (RSA SHA-256)</option>
+        <option value="ES256">ES256 (ECDSA SHA-256)</option>
+      </select>
+    </div>
+    <div>
+      <div>Secret / Public Key:</div>
+      <textarea id="verify-key-input" rows="6" cols="60" placeholder="Secret or PEM key..."></textarea>
+    </div>
+    <div>
+      <button onclick="JwtTool.verify()">Verify</button>
+      <button onclick="JwtTool.clearTab('verify')">Clear</button>
+    </div>
+    <div id="verify-error" style="color:red"></div>
+    <div id="verify-result"></div>
+  </div>
+
+  <!-- Generate Tab -->
+  <div id="generate-tab-content" style="display: none;">
+    <div>
+      <div>Payload (JSON):</div>
+      <textarea id="generate-payload" rows="6" cols="60" placeholder='{"sub": "1234567890", "name": "John Doe"}'></textarea>
+    </div>
+    <div>
+      <div>Algorithm:</div>
+      <select id="generate-algorithm" onchange="JwtTool.updateKeyPlaceholder('generate')">
+        <option value="HS256">HS256 (HMAC SHA-256)</option>
+        <option value="RS256">RS256 (RSA SHA-256)</option>
+        <option value="ES256">ES256 (ECDSA SHA-256)</option>
+      </select>
+    </div>
+    <div>
+      <div>Secret / Private Key:</div>
+      <textarea id="generate-key-input" rows="6" cols="60" placeholder="Secret or PEM key..."></textarea>
+    </div>
+    <div>
+      <button onclick="JwtTool.generate()">Generate</button>
+      <button onclick="JwtTool.clearTab('generate')">Clear</button>
+    </div>
+    <div id="generate-error" style="color:red"></div>
+    <div>
+      <div>Generated JWT:</div>
+      <textarea id="generate-output" rows="4" cols="60" readonly placeholder="Result..."></textarea>
+    </div>
+    <div>
+      <button onclick="JwtTool.copyOutput('generate-output')">Copy JWT</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as jose from 'https://cdn.jsdelivr.net/npm/jose@5.2.0/dist/browser/index.js';
+    window.jose = jose;
+  </script>
+  <script src="./src/main.js"></script>
+</template>
