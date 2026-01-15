@@ -1,11 +1,11 @@
 <template id="json-prettier">
   <h2>JSON Prettier</h2>
-  <div>
-    <div>Input JSON:</div>
-    <textarea id="json-input" rows="10" cols="80" placeholder="Enter JSON..."></textarea>
+  <div class="mb-2">
+    <label for="json-input">Input JSON:</label>
+    <textarea id="json-input" placeholder="Enter JSON..."></textarea>
   </div>
-  <div>
-    <label>Indent:
+  <div class="mb-2">
+    <label for="indent-size">Indent:
       <select id="indent-size">
         <option value="2" selected>2 spaces</option>
         <option value="4">4 spaces</option>
@@ -16,10 +16,10 @@
     <button onclick="JsonPrettierTool.minifyJson()">Minify</button>
     <button onclick="JsonPrettierTool.clearJson()">Clear</button>
   </div>
-  <div id="json-error" style="color:red"></div>
-  <div>
-    <div>Output:</div>
-    <textarea id="json-output" rows="10" cols="80" readonly placeholder="Result..."></textarea>
+  <div id="json-error" class="error"></div>
+  <div class="mb-2">
+    <label for="json-output">Output:</label>
+    <textarea id="json-output" readonly placeholder="Result..."></textarea>
   </div>
   <div>
     <button onclick="JsonPrettierTool.copyJson()">Copy</button>

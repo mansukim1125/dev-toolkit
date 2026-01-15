@@ -1,6 +1,6 @@
 <template id="jwt">
   <h2>JWT Encode/Decode/Verify</h2>
-  <div>
+  <div class="mb-2">
     <div>Mode:</div>
     <button id="decode-tab-btn" onclick="JwtTool.switchTab('decode')">Decode</button>
     <button id="verify-tab-btn" onclick="JwtTool.switchTab('verify')">Verify</button>
@@ -9,26 +9,26 @@
 
   <!-- Decode Tab -->
   <div id="decode-tab-content">
-    <div>
-      <div>JWT Token:</div>
-      <textarea id="decode-jwt-input" rows="4" cols="60" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+    <div class="mb-2">
+      <label for="decode-jwt-input">JWT Token:</label>
+      <textarea id="decode-jwt-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
     </div>
-    <div>
+    <div class="mb-2">
       <button onclick="JwtTool.decode()">Decode</button>
       <button onclick="JwtTool.clearTab('decode')">Clear</button>
     </div>
-    <div id="decode-error" style="color:red"></div>
-    <div>
-      <div>Header:</div>
-      <textarea id="decode-header-output" rows="4" cols="60" readonly placeholder="Header..."></textarea>
+    <div id="decode-error" class="error"></div>
+    <div class="mb-2">
+      <label for="decode-header-output">Header:</label>
+      <textarea id="decode-header-output" readonly placeholder="Header..."></textarea>
     </div>
-    <div>
-      <div>Payload:</div>
-      <textarea id="decode-payload-output" rows="6" cols="60" readonly placeholder="Payload..."></textarea>
+    <div class="mb-2">
+      <label for="decode-payload-output">Payload:</label>
+      <textarea id="decode-payload-output" readonly placeholder="Payload..."></textarea>
     </div>
-    <div>
-      <div>Signature:</div>
-      <textarea id="decode-signature-output" rows="2" cols="60" readonly placeholder="Signature..."></textarea>
+    <div class="mb-2">
+      <label for="decode-signature-output">Signature:</label>
+      <textarea id="decode-signature-output" readonly placeholder="Signature..."></textarea>
     </div>
     <div>
       <button onclick="JwtTool.copyOutput('decode-payload-output')">Copy Payload</button>
@@ -37,56 +37,56 @@
 
   <!-- Verify Tab -->
   <div id="verify-tab-content" style="display: none;">
-    <div>
-      <div>JWT Token:</div>
-      <textarea id="verify-jwt-input" rows="4" cols="60" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+    <div class="mb-2">
+      <label for="verify-jwt-input">JWT Token:</label>
+      <textarea id="verify-jwt-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
     </div>
-    <div>
-      <div>Algorithm:</div>
+    <div class="mb-2">
+      <label for="verify-algorithm">Algorithm:</label>
       <select id="verify-algorithm" onchange="JwtTool.updateKeyPlaceholder('verify')">
         <option value="HS256">HS256 (HMAC SHA-256)</option>
         <option value="RS256">RS256 (RSA SHA-256)</option>
         <option value="ES256">ES256 (ECDSA SHA-256)</option>
       </select>
     </div>
-    <div>
-      <div>Secret / Public Key:</div>
-      <textarea id="verify-key-input" rows="6" cols="60" placeholder="Secret or PEM key..."></textarea>
+    <div class="mb-2">
+      <label for="verify-key-input">Secret / Public Key:</label>
+      <textarea id="verify-key-input" placeholder="Secret or PEM key..."></textarea>
     </div>
-    <div>
+    <div class="mb-2">
       <button onclick="JwtTool.verify()">Verify</button>
       <button onclick="JwtTool.clearTab('verify')">Clear</button>
     </div>
-    <div id="verify-error" style="color:red"></div>
+    <div id="verify-error" class="error"></div>
     <div id="verify-result"></div>
   </div>
 
   <!-- Generate Tab -->
   <div id="generate-tab-content" style="display: none;">
-    <div>
-      <div>Payload (JSON):</div>
-      <textarea id="generate-payload" rows="6" cols="60" placeholder='{"sub": "1234567890", "name": "John Doe"}'></textarea>
+    <div class="mb-2">
+      <label for="generate-payload">Payload (JSON):</label>
+      <textarea id="generate-payload" placeholder='{"sub": "1234567890", "name": "John Doe"}'></textarea>
     </div>
-    <div>
-      <div>Algorithm:</div>
+    <div class="mb-2">
+      <label for="generate-algorithm">Algorithm:</label>
       <select id="generate-algorithm" onchange="JwtTool.updateKeyPlaceholder('generate')">
         <option value="HS256">HS256 (HMAC SHA-256)</option>
         <option value="RS256">RS256 (RSA SHA-256)</option>
         <option value="ES256">ES256 (ECDSA SHA-256)</option>
       </select>
     </div>
-    <div>
-      <div>Secret / Private Key:</div>
-      <textarea id="generate-key-input" rows="6" cols="60" placeholder="Secret or PEM key..."></textarea>
+    <div class="mb-2">
+      <label for="generate-key-input">Secret / Private Key:</label>
+      <textarea id="generate-key-input" placeholder="Secret or PEM key..."></textarea>
     </div>
-    <div>
+    <div class="mb-2">
       <button onclick="JwtTool.generate()">Generate</button>
       <button onclick="JwtTool.clearTab('generate')">Clear</button>
     </div>
-    <div id="generate-error" style="color:red"></div>
-    <div>
-      <div>Generated JWT:</div>
-      <textarea id="generate-output" rows="4" cols="60" readonly placeholder="Result..."></textarea>
+    <div id="generate-error" class="error"></div>
+    <div class="mb-2">
+      <label for="generate-output">Generated JWT:</label>
+      <textarea id="generate-output" readonly placeholder="Result..."></textarea>
     </div>
     <div>
       <button onclick="JwtTool.copyOutput('generate-output')">Copy JWT</button>
