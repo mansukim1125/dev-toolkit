@@ -1,0 +1,68 @@
+<template id="timezone-converter">
+  <h2>Timezone Converter</h2>
+  <div class="grid-2col">
+    <div class="grid-item">
+      <div class="mb-2">
+        <label for="datetime-input">Date & Time:</label>
+        <input type="datetime-local" id="datetime-input" step="1">
+      </div>
+      <div class="mb-2">
+        <button onclick="TimezoneTool.setNow()">Now</button>
+      </div>
+      <div class="mb-2">
+        <label for="source-tz">Source Timezone:</label>
+        <select id="source-tz">
+          <option value="UTC">UTC</option>
+          <option value="Asia/Seoul" selected>Asia/Seoul (KST)</option>
+          <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+          <option value="Asia/Shanghai">Asia/Shanghai (CST)</option>
+          <option value="Asia/Singapore">Asia/Singapore (SGT)</option>
+          <option value="Europe/London">Europe/London (GMT/BST)</option>
+          <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
+          <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
+          <option value="America/New_York">America/New_York (EST/EDT)</option>
+          <option value="America/Chicago">America/Chicago (CST/CDT)</option>
+          <option value="America/Denver">America/Denver (MST/MDT)</option>
+          <option value="America/Los_Angeles">America/Los_Angeles (PST/PDT)</option>
+          <option value="Australia/Sydney">Australia/Sydney (AEST/AEDT)</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-item">
+      <div class="mb-2">
+        <label for="target-tz">Target Timezone:</label>
+        <select id="target-tz">
+          <option value="UTC" selected>UTC</option>
+          <option value="Asia/Seoul">Asia/Seoul (KST)</option>
+          <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+          <option value="Asia/Shanghai">Asia/Shanghai (CST)</option>
+          <option value="Asia/Singapore">Asia/Singapore (SGT)</option>
+          <option value="Europe/London">Europe/London (GMT/BST)</option>
+          <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
+          <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
+          <option value="America/New_York">America/New_York (EST/EDT)</option>
+          <option value="America/Chicago">America/Chicago (CST/CDT)</option>
+          <option value="America/Denver">America/Denver (MST/MDT)</option>
+          <option value="America/Los_Angeles">America/Los_Angeles (PST/PDT)</option>
+          <option value="Australia/Sydney">Australia/Sydney (AEST/AEDT)</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <button onclick="TimezoneTool.swap()">Swap Timezones</button>
+      </div>
+    </div>
+  </div>
+  <div class="mb-2">
+    <button onclick="TimezoneTool.convert()">Convert</button>
+    <button onclick="TimezoneTool.clear()">Clear</button>
+  </div>
+  <div id="error" class="error"></div>
+  <div class="mb-2">
+    <label for="output">Result:</label>
+    <textarea id="output" readonly placeholder="Converted time will appear here..."></textarea>
+  </div>
+  <div>
+    <button onclick="TimezoneTool.copy()">Copy</button>
+  </div>
+  <script src="./src/main.js"></script>
+</template>
