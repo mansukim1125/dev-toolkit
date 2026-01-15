@@ -1,0 +1,28 @@
+<h2>JSON Formatter</h2>
+
+<form method="GET" action="/tools/json-formatter">
+  <textarea name="input" placeholder='{"key": "value"}'><%= input %></textarea>
+  <p>
+    <label>Indent:
+      <select name="indent">
+        <option value="2">2 spaces</option>
+        <option value="4">4 spaces</option>
+        <option value="tab">Tab</option>
+      </select>
+    </label>
+  </p>
+  <p>
+    <button type="submit" name="action" value="prettify">Prettify</button>
+    <button type="submit" name="action" value="minify">Minify</button>
+  </p>
+</form>
+
+<% if (error) { %>
+  <p style="color:red"><%= error %></p>
+<% } %>
+
+<% if (result) { %>
+  <h3>Result</h3>
+  <pre id="result"><%= result %></pre>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('result').textContent)">Copy</button>
+<% } %>

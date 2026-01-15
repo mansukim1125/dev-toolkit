@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title + ' - ' : '' %>Dev Toolkit</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1><a href="/">Dev Toolkit</a></h1>
+  <nav>
+    <a href="/tools/base64">Base64</a>
+    <a href="/tools/json-formatter">JSON Formatter</a>
+    <a href="/tools/jwt">JWT</a>
+  </nav>
+  <hr>
+  <%- content %>
+</body>
+</html>

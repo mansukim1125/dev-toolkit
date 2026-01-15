@@ -1,0 +1,9 @@
+<h2>Developer Tools</h2>
+<div class="tool-list">
+  <% tools.forEach(tool => { %>
+    <a href="/tools/<%= tool.id %>">
+      <h3><%= tool.name %></h3>
+      <p><%= tool.description %></p>
+    </a>
+  <% }) %>
+</div>

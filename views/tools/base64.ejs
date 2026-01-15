@@ -1,0 +1,19 @@
+<h2>Base64</h2>
+
+<form method="GET" action="/tools/base64">
+  <textarea name="input" placeholder="Enter text..."><%= input %></textarea>
+  <p>
+    <button type="submit" name="action" value="encode">Encode</button>
+    <button type="submit" name="action" value="decode">Decode</button>
+  </p>
+</form>
+
+<% if (error) { %>
+  <p style="color:red"><%= error %></p>
+<% } %>
+
+<% if (result) { %>
+  <h3>Result</h3>
+  <pre id="result"><%= result %></pre>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('result').textContent)">Copy</button>
+<% } %>

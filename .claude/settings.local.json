@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(image-converter\\): 이미지 변환 도구 추가\n\n- PNG, JPG, WebP 형식 간 변환 지원\n- 이미지 리사이즈 기능 \\(비율 유지 옵션\\)\n- 드래그앤드롭 및 파일 선택 지원\n- 품질 조절 슬라이더 \\(JPG/WebP\\)\n- Canvas API를 활용한 클라이언트 사이드 처리\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}

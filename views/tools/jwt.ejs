@@ -1,0 +1,22 @@
+<h2>JWT Decoder</h2>
+
+<form method="GET" action="/tools/jwt">
+  <textarea name="input" placeholder="eyJhbGciOiJIUzI1NiIs..."><%= input %></textarea>
+  <p>
+    <button type="submit">Decode</button>
+  </p>
+</form>
+
+<% if (error) { %>
+  <p style="color:red"><%= error %></p>
+<% } %>
+
+<% if (header) { %>
+  <h3>Header</h3>
+  <pre><%= JSON.stringify(header, null, 2) %></pre>
+<% } %>
+
+<% if (payload) { %>
+  <h3>Payload</h3>
+  <pre><%= JSON.stringify(payload, null, 2) %></pre>
+<% } %>
