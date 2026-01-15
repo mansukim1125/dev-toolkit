@@ -71,7 +71,7 @@ const tools = [
   { id: 'env-converter', name: 'Env Converter' },
   { id: 'json-xml-compare', name: 'JSON/XML Compare' },
   { id: 'jwt', name: 'JWT' },
-  // 새 도구 추가
+  { id: 'timezone-converter', name: 'Timezone Converter' },
 ];
 
 // === Navigation ===
