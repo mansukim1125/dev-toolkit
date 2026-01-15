@@ -71,6 +71,7 @@ const tools = [
   { id: 'env-converter', name: 'Env Converter' },
   { id: 'json-xml-compare', name: 'JSON/XML Compare' },
   { id: 'jwt', name: 'JWT' },
+  { id: 'cron-parser', name: 'Cron Parser' },
   // 새 도구 추가
 ];
 
