@@ -1,4 +1,35 @@
-<template id="image-converter">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/src/styles.css">
+  <title>Image Converter</title>
+  <style>
+    #drop-zone {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    #drop-zone:hover {
+      border-color: #007bff;
+    }
+    #drop-zone.dragover {
+      border-color: #007bff;
+      background-color: #f0f8ff;
+    }
+    .preview-container {
+      max-height: 200px;
+      overflow: auto;
+      border: 1px solid #ccc;
+      padding: 5px;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
   <h2>Image Converter</h2>
 
   <!-- File Input Section -->
@@ -88,29 +119,6 @@
   <!-- Hidden Canvas for Processing -->
   <canvas id="canvas" style="display: none;"></canvas>
 
-  <style>
-    #drop-zone {
-      border: 2px dashed #ccc;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, background-color 0.2s;
-    }
-    #drop-zone:hover {
-      border-color: #007bff;
-    }
-    #drop-zone.dragover {
-      border-color: #007bff;
-      background-color: #f0f8ff;
-    }
-    .preview-container {
-      max-height: 200px;
-      overflow: auto;
-      border: 1px solid #ccc;
-      padding: 5px;
-      min-height: 50px;
-    }
-  </style>
-
   <script src="./src/main.js"></script>
-</template>
+</body>
+</html>

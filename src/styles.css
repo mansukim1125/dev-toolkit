@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 8px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
 /* Form controls - responsive width */
 input[type="text"],
 input[type="number"],
