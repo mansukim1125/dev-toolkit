@@ -56,12 +56,21 @@ async function loadHTMLTemplate(id) {
 }
 
 // === Helper Functions ===
-async function renderFromTemplate(templateId) {
-  const template = await loadHTMLTemplate(templateId);
-  const clone = template.content.cloneNode(true);
-  const div = document.createElement('div');
-  div.appendChild(clone);
-  return div.innerHTML;
+async function ensureToolPanel(toolId) {
+  const mainContainer = document.getElementById('main');
+  let panel = mainContainer.querySelector(`[data-tool="${toolId}"]`);
+
+  if (!panel) {
+    const template = await loadHTMLTemplate(toolId);
+    const clone = template.content.cloneNode(true);
+    panel = document.createElement('div');
+    panel.setAttribute('data-tool', toolId);
+    panel.style.display = 'none';
+    panel.appendChild(clone);
+    mainContainer.appendChild(panel);
+  }
+
+  return panel;
 }
 
 // === Tool Registry ===
@@ -87,16 +96,25 @@ function renderNav() {
 }
 
 async function switchTool(id) {
+  const currentToolId = activeTool;
   activeTool = id;
   renderNav();
-  await renderMain();
+  await showToolPanel(id, currentToolId);
 }
 
-async function renderMain() {
-  const tool = tools.find(t => t.id === activeTool);
-  document.getElementById('main').innerHTML = tool ? await renderFromTemplate(tool.id) : '';
+async function showToolPanel(targetToolId, activeToolId) {
+  const mainContainer = document.getElementById('main');
+
+  // 활성화된 패널 숨기기
+  if (activeToolId) {
+    mainContainer.querySelector(`[data-tool="${activeToolId}"]`).style.display = 'none';
+  }
+
+  // 선택된 도구 패널 보여주기 (없으면 생성)
+  const panel = await ensureToolPanel(targetToolId);
+  panel.style.display = 'block';
 }
 
 // === Init ===
 renderNav();
-renderMain();
+showToolPanel(activeTool);
