@@ -1,0 +1,21 @@
+<template id="url-encode-decode">
+  <h2>URL Encode/Decode</h2>
+  <div class="mb-2">
+    <label for="input">Input:</label>
+    <textarea id="input" placeholder="Enter text or URL-encoded text..."></textarea>
+  </div>
+  <div class="mb-2">
+    <button onclick="URLEncodeTool.encode()">Encode</button>
+    <button onclick="URLEncodeTool.decode()">Decode</button>
+    <button onclick="URLEncodeTool.clear()">Clear</button>
+  </div>
+  <div id="error" class="error"></div>
+  <div class="mb-2">
+    <label for="output">Output:</label>
+    <textarea id="output" readonly placeholder="Result..."></textarea>
+  </div>
+  <div>
+    <button onclick="URLEncodeTool.copy()">Copy</button>
+  </div>
+  <script src="./src/main.js"></script>
+</template>

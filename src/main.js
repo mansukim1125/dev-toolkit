@@ -74,6 +74,7 @@ const tools = [
   { id: 'cron-parser', name: 'Cron Parser' },
   { id: 'timezone-converter', name: 'Timezone Converter' },
   { id: 'image-converter', name: 'Image Converter' },
+  { id: 'url-encode-decode', name: 'URL Encode/Decode' },
 ];
 
 // === Navigation ===
