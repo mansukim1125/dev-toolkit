@@ -1,0 +1,67 @@
+<template id="dns-lookup">
+  <h2>DNS Propagation Checker</h2>
+  <p>Compare DNS records across Google and Cloudflare public resolvers over HTTPS.</p>
+  <p><small>Queries are sent directly from your browser to these providers. Do not enter private or internal domain names.</small></p>
+
+  <div class="grid-2col mb-2">
+    <div class="grid-item">
+      <label for="dns-domain-input">Domain:</label>
+      <input
+        type="text"
+        id="dns-domain-input"
+        placeholder="example.com"
+        autocomplete="off"
+        spellcheck="false"
+        onkeydown="DnsLookupTool.handleKeydown(event)"
+      >
+    </div>
+    <div class="grid-item">
+      <label for="dns-record-type">Record type:</label>
+      <select id="dns-record-type">
+        <option value="A">A</option>
+        <option value="AAAA">AAAA</option>
+        <option value="CNAME">CNAME</option>
+        <option value="MX">MX</option>
+        <option value="NS">NS</option>
+        <option value="TXT">TXT</option>
+        <option value="SOA">SOA</option>
+        <option value="CAA">CAA</option>
+        <option value="SRV">SRV</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <button id="dns-query-button" onclick="DnsLookupTool.lookup()">Check Propagation</button>
+    <button onclick="DnsLookupTool.clear()">Clear</button>
+  </div>
+
+  <div id="dns-message" class="mb-2" role="status" aria-live="polite"></div>
+
+  <section id="dns-results" style="display: none;">
+    <div id="dns-summary" class="mb-2"></div>
+    <div class="table-scroll mb-2">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Resolver</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>TTL</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="dns-records-body"></tbody>
+      </table>
+    </div>
+
+    <p><small>Public resolvers use anycast, so this comparison does not represent every geographic DNS node.</small></p>
+    <details class="mb-2">
+      <summary>Raw DNS responses</summary>
+      <textarea id="dns-raw-output" rows="16" readonly></textarea>
+    </details>
+    <button onclick="DnsLookupTool.copyJson()">Copy JSON</button>
+  </section>
+
+  <script src="./src/main.js"></script>
+</template>
