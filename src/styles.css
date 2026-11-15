@@ -29,6 +29,15 @@ textarea {
 .mt-2 { margin-top: 16px; }
 .error { color: red; }
 
+/* Informational pages */
+.policy-page {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
 /* Responsive: single column on mobile */
 @media (max-width: 768px) {
   .grid-2col {
